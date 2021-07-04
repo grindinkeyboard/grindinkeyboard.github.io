@@ -1,0 +1,111 @@
+<!doctype html>
+
+<html>
+    <head>
+		<title>GRINDIN</title>
+        <style>
+@font-face {
+    font-family: '212-Keyboard';
+    src:  url('212-Keyboard.ttf.woff') format('woff'),
+    url('212-Keyboard.ttf.svg#212-Keyboard') format('svg'),
+    url('212-Keyboard.ttf.eot'),
+    url('212-Keyboard.eot?#iefix') format('embedded-opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+p {
+    font-family: '212-Keyboard';
+    color: #111;
+    font-size: 100px;
+}
+
+audio {
+    display: none;
+}
+
+.down {
+    position: relative;
+    top: 20px;
+}
+
+.center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+        </style>
+    </head>
+    <body>
+        <div class="center">
+            <p><span class="g">G</span><span class="r">R</span><span class="i">I</span><span class="n">N</span><span class="d">D</span><span class="i">I</span><span class="n">N</span></p>
+        </div>
+        <audio id="g"><source src="g.mp3" type="audio/mpeg"></audio>
+        <audio id="r"><source src="r.mp3" type="audio/mpeg"></audio>
+        <audio id="i"><source src="i.mp3" type="audio/mpeg"></audio>
+        <audio id="n"><source src="n.mp3" type="audio/mpeg"></audio>
+        <audio id="d"><source src="d.mp3" type="audio/mpeg"></audio>
+        <script>
+            function play(x) {
+                var audio = document.getElementById(x);
+                audio.currentTime = 0;
+                audio.play();
+            }
+
+            function down(c, b) {
+                var x = document.getElementsByClassName(c);
+                var i;
+                for (i = 0; i < x.length; i++) {
+                    if (b) {
+                        x[i].classList.add("down");
+                    } else {
+                        x[i].classList.remove("down");
+                    }
+                }
+            }
+
+            document.addEventListener("keydown", function(e) {
+                if (e.repeat) return;
+                if (e.code == "KeyG") {
+                    play("g");
+                    down("g", true);
+                }
+                if (e.code == "KeyR") {
+                    play("r");
+                    down("r", true);
+                }
+                if (e.code == "KeyI") {
+                    play("i");
+                    down("i", true);
+                }
+                if (e.code == "KeyN") {
+                    play("n");
+                    down("n", true);
+                }
+                if (e.code == "KeyD") {
+                    play("d");
+                    down("d", true);
+                }
+            });
+
+            document.addEventListener("keyup", function(e) {
+                if (e.code == "KeyG") {
+                    down("g", false);
+                }
+                if (e.code == "KeyR") {
+                    down("r", false);
+                }
+                if (e.code == "KeyI") {
+                    down("i", false);
+                }
+                if (e.code == "KeyN") {
+                    down("n", false);
+                }
+                if (e.code == "KeyD") {
+                    down("d", false);
+                }
+            });
+        </script>
+    </body>
+</html>
